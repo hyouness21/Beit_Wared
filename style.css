@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Coffee Shop QR Menu – Single-page, Arabic items + English nav
+   Mobile-first, HTML + CSS only. Font: Tajawal (Arabic-friendly).
+   ========================================================================== */
+
+/* ---------- Base & smooth scroll ---------- */
+html {
+  scroll-behavior: smooth;
+  /* Prevent nav from covering section titles when scrolling */
+  scroll-padding-top: 10rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: rgba(20, 20, 20, 0.98);;
+  color: #fff;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ---------- Header: Centered logo placeholder (fixed at top) ---------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 72px;
+  
+  
+  border-radius: 8px;
+}
+
+/* Replace .logo-text when using an image: use .logo-placeholder img { max-width: 100%; height: auto; } */
+.logo-text {
+  color: #d4af37;
+  font-weight: 900;
+  font-size: 1.75rem;
+}
+
+/* ---------- Fixed navigation bar (below logo) ---------- */
+.nav {
+  position: fixed;
+  top: 96px; /* Below header (logo) */
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: rgba(20, 20, 20, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-link.active {
+  color: #d4af37;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+.nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.nav-link {
+  padding: 0.5rem 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #d4af37;
+  outline: none;
+}
+
+/* ---------- Main content: spacing for fixed logo + nav ---------- */
+.main {
+  padding-top: 8.5rem; /* Logo ~96px + nav ~42px */
+  padding-bottom: 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ---------- Category sections: shared layout ---------- */
+.category {
+  margin-bottom: 2rem;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pattern overlay: dark layer so text stays readable */
+.category::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.category-heading {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 1rem 0;
+  color: #d4af37;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.category-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sub-heading {
+  margin: 1rem 0 0.25rem 0;
+  color: #d4af37;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.sub-heading:first-child {
+  margin-top: 0;
+}
+
+/* Menu item: name (RTL) + price on same row */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.item-name {
+  color: #fff;
+  font-weight: 500;
+}
+
+.item-price {
+  color: #d4af37;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ---------- Section background patterns (CSS-drawn) ---------- */
+
+
+
+/* Sandwiches: layered stripes (bread layers) */
+.section-sandwiches {
+  
+  background-image: url("images/ssbackkk.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.section-saj {
+  
+  background-image: url("images/sajb.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.section-shabata {
+  
+  background-image: url("images/shabataback.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Drinks: coffee cup circles (radial gradients) */
+.section-hotdrinks {
+  
+  background-image: url(images/hbackk.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-colddrinks {
+  
+  background-image: url(images/cbackk.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+.section-freshdrinks {
+  
+  background-image: url(images/freshbackk.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Argile: soft smoke / wavy lines */
+.section-argile {
+  background-color: #151a18;
+  background-image: url(images/aaback.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* PlayStation: controller-style dots (grid of circles) */
+.section-playstation {
+  background-color: #0f1218;
+  background-image:url(images/P5background.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-dessert {
+  background-color: #0f1218;
+  background-image:url(images/debackkk.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-la2mashet {
+  background-color: #0f1218;
+  background-image:url(images/chback.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-chocolate {
+  background-color: #0f1218;
+  background-image:url(images/chocoback.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.section-traboulsi {
+  background-color: #0f1218;
+  background-image:url(images/Kaakback.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- Scroll padding helper (optional extra space at bottom) ---------- */
+.scroll-padding {
+  height: 2rem;
+}
+
+/* ---------- Responsive: smaller logo & nav on very small screens ---------- */
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 0.5rem;
+  }
+
+  .logo-placeholder {
+    width: 100px;
+    height: 70px;
+  }
+
+  .nav {
+    padding: 0.4rem;
+    gap: 0.2rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .main {
+    padding-top: 6.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .category {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .category-heading {
+    font-size: 1.35rem;
+  }
+
+  .nav {
+    top: 86px;
+  }
+
+  .main {
+    padding-top: 7.5rem;
+  }
+
+  html {
+    scroll-padding-top: 8.5rem;
+  }
+}
